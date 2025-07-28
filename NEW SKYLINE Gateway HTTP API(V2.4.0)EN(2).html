@@ -1,0 +1,875 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<div style="page-break-before:always; page-break-after:always"><div><p>1<br/></p>
+<p><b>SKYLINE HTTP APPLICATION INTERFACE<br/></b></p>
+<p>Version: 2.4.0<br/></p>
+<p>DOC NO: XXXXXXXX</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p>Project Name:<br/>Project Code:<br/></p>
+<p>Internal<br/>Confidential<br/></p>
+<p>Doc Name: SKYLINE HTTP APPLICATION INTERFACE<br/>SPEC<br/></p>
+<p>Version: 2.4.0<br/></p>
+<p>Release 0<br/></p>
+<p>Doc No: xxxxxxxx<br/></p>
+<p>File:<br/></p>
+<p>Prepared by: PengJian<br/></p>
+<p>Endorsed by:<br/>Accepted by:<br/></p>
+<p>Doc. Effective Date: Date<br/>of Expiry:<br/></p>
+<p>Date:<br/>Date:<br/>Date:<br/>Date:<br/>Date: N/A<br/></p>
+<p><b>Related Document<br/></b>Doc No. Description<br/></p>
+<p>Distribution<br/></p>
+<p>Copy No. Holder<br/></p>
+<p>1<br/>2<br/></p>
+<p>Document No : xxxxxxx<br/>Version: 2.4.0<br/></p>
+<p>11/22/2024</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p>Amendment History<br/></p>
+<p>Change<br/>Number Revision Description<br/></p>
+<p>Chapter<br/>Affected<br/></p>
+<p>Revision<br/>Number<br/></p>
+<p>Changed<br/>By Date<br/></p>
+<p>001<br/>002<br/></p>
+<p>003<br/></p>
+<p>004<br/></p>
+<p>005<br/></p>
+<p>006<br/></p>
+<p>007<br/></p>
+<p>008<br/></p>
+<p>009<br/></p>
+<p>010<br/></p>
+<p>011<br/></p>
+<p>012<br/></p>
+<p>013<br/></p>
+<p>014<br/></p>
+<p>First draft<br/></p>
+<p>Modify some message<br/>interfaces<br/></p>
+<p>Implement and modify<br/>goip_send_cmd.htm<br/>Increase SMS task attribute<br/>coding, smsc<br/>Modify and implement get<br/>and<br/>customize device status<br/>Increase the save/reset<br/>command interface<br/>Increase the get/set command<br/>interface<br/>Increase SMS query interface<br/></p>
+<p>Add query SMS statistics<br/>and query call statistics<br/>interface<br/>Merge device-related HTTP<br/>documents and modify the<br/>document name<br/></p>
+<p>Add example<br/></p>
+<p>Add sending MMS<br/>parameters<br/>Add MMS attachment<br/>parameters<br/>Add security interface<br/></p>
+<p>Add &#8220;to_title_array&#8221;<br/>parameter<br/>Add modify IMEI<br/>parameters<br/></p>
+<p>All<br/></p>
+<p>5.2.4<br/>5.3.1<br/>5.3.4<br/>6.2.3<br/>4.1.3<br/>5.3.1.3<br/></p>
+<p>3.1.1<br/>3.1.2<br/>4.1.3<br/></p>
+<p>4.1.2<br/></p>
+<p>7<br/></p>
+<p>5.4<br/></p>
+<p>5.3.1.3<br/></p>
+<p>5.3.1.3<br/></p>
+<p>3<br/></p>
+<p>17<br/></p>
+<p>28<br/></p>
+<p>1.0<br/>1.1<br/></p>
+<p>1.1<br/></p>
+<p>1.2<br/></p>
+<p>1.2<br/></p>
+<p>1.2<br/></p>
+<p>1.3<br/></p>
+<p>1.8<br/></p>
+<p>1.9<br/></p>
+<p>2.0<br/></p>
+<p>2.0<br/></p>
+<p>2.0<br/></p>
+<p>2.0<br/></p>
+<p>PengJian<br/>PengJian<br/></p>
+<p>PengJian<br/></p>
+<p>PengJian<br/></p>
+<p>PengJian<br/>PengJian<br/>PengJian<br/></p>
+<p>LiGuanB<br/>in<br/></p>
+<p>Xiongjia<br/>o<br/>chenkc<br/></p>
+<p>Chenkc<br/></p>
+<p>LiGuanB<br/>in<br/>Xiongjia<br/>o<br/>FZP<br/></p>
+<p>2015.05.1<br/>8<br/>2015.06.0<br/>3<br/></p>
+<p>2015.01.2<br/>9<br/></p>
+<p>2016.04.1<br/>7<br/></p>
+<p>2016.06.1<br/>3<br/>2016.06.2<br/>0<br/>2016.06.2<br/>2<br/>2019.01.0<br/>3<br/></p>
+<p>2019.06.2<br/>7<br/>2019.11.2<br/>8<br/>2020.5.14<br/></p>
+<p>2021.8.05<br/></p>
+<p>2021.12.2<br/>7<br/>2023.04.1<br/>2<br/></p>
+<p>Document No : xxxxxxx<br/>Version: 2.4.0<br/></p>
+<p>11/22/2024</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>015<br/></p>
+<p>016<br/></p>
+<p>017<br/>018<br/></p>
+<p>019<br/></p>
+<p>020<br/></p>
+<p>021<br/></p>
+<p>Modify<br/>the&#8220;goip_get_status&#8221;interfac<br/>e<br/>1. Add all_slots url<br/>parameters<br/>2. Add the inserted field to<br/>the return result<br/>3. Add slot_active in the<br/>command output<br/>fields<br/>Add SIM Card Numbers<br/></p>
+<p>Add MMS receiving<br/>Add ESIM<br/></p>
+<p>1.Add ledon and ledoff<br/>operations.<br/>2.The port status includes an<br/>added led state.<br/>Modified port status code<br/>and details<br/>1. Add status code 15:<br/>Access Mobile Network<br/>2. Add status code 16:<br/>module response timeout<br/>Modify ESIM related<br/>interfaces<br/></p>
+<p>4.1.2<br/>4.1.4<br/></p>
+<p>6.4.4<br/></p>
+<p>11<br/></p>
+<p>12<br/></p>
+<p>4.1.4&#12289;5<br/></p>
+<p>4.1.4<br/></p>
+<p>12<br/></p>
+<p>2.0<br/></p>
+<p>2.0<br/></p>
+<p>2.1<br/>2.2<br/></p>
+<p>2.3<br/></p>
+<p>2.3.1<br/></p>
+<p>2.4<br/></p>
+<p>LGB<br/></p>
+<p>FZP<br/>lgb<br/>lgb<br/>lgb<br/></p>
+<p>LMY<br/></p>
+<p>lgb<br/></p>
+<p>2023.9.26<br/></p>
+<p>2023.10.2<br/>5<br/>2024.03.2<br/>8<br/>2024.07.0<br/>3<br/>2024.7.19<br/></p>
+<p>2024.9.10<br/></p>
+<p>2024.11.2<br/>2<br/></p>
+<p>Document No : xxxxxxx<br/>Version: 2.4.0<br/></p>
+<p>11/22/2024</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/><b>Table of Content<br/></b></p>
+<p>1 Overview ............................................................................................................................................ 1<br/>2 Copyright Notice ................................................................................................................................ 1<br/>3 Interface Security ............................................................................................................................... 1<br/></p>
+<p>3.1 Interactive process .................................................................................................................. 1<br/>3.1.1 ..................................................................................................................................... 2<br/></p>
+<p>3.2 Interactive description ............................................................................................................. 2<br/>3.2.1 Parameter ..................................................................................................................... 2<br/>3.2.2 Response message ........................................................................................................ 2<br/>3.2.3 Subsequent URL request parameters ........................................................................... 3<br/></p>
+<p>3.3 Statement of calculation .......................................................................................................... 3<br/>4 Status Notification ............................................................................................................................. 4<br/></p>
+<p>4.1.1 URL .............................................................................................................................. 4<br/>4.1.2 Parameter ..................................................................................................................... 4<br/>4.1.3 Dev-status message ...................................................................................................... 4<br/>4.1.4 Port -status message ..................................................................................................... 5<br/></p>
+<p>5 Operate command sending ................................................................................................................. 6<br/>5.1.1 URL .............................................................................................................................. 6<br/>host: Device IP address ......................................................................................................... 6<br/>5.1.2 Parameter ..................................................................................................................... 6<br/>5.1.3 Data .............................................................................................................................. 7<br/></p>
+<p>6 SMS Sending ..................................................................................................................................... 8<br/>6.1 Topology ................................................................................................................................. 8<br/>6.2 SMS sending flow chart .......................................................................................................... 9<br/></p>
+<p>6.2.1 <i>SMS sending </i>................................................................................................................. 9<br/>6.2.2 Sending status report .................................................................................................... 9<br/>6.2.3 Sending status query .................................................................................................... 9<br/>6.2.4 Pause the SMS task ...................................................................................................... 9<br/>6.2.5 Resume the paused SMS task ...................................................................................... 9<br/>6.2.6 Delete the SMS task ..................................................................................................... 9<br/>6.2.7 Query the SMS task ..................................................................................................... 9<br/></p>
+<p>6.3 Message description ................................................................................................................ 9<br/>6.3.1 SMS Sending ............................................................................................................... 9<br/>6.3.2 URL .............................................................................................................................. 9<br/>6.3.3 Task send report ......................................................................................................... 13<br/>6.3.4 Pause the SMS task .................................................................................................... 14<br/>6.3.5 Resume the paused SMS task .................................................................................... 15<br/>6.3.6 <i>Delete the SMS task </i>.................................................................................................. 17<br/>6.3.7 Query the SMS task ................................................................................................... 18<br/></p>
+<p>6.4 Example ................................................................................................................................ 19<br/>6.4.1 Status notification ...................................................................................................... 19<br/>6.4.2 Send commend ........................................................................................................... 20<br/>6.4.3 Modify IMEI parameters ........................................................................................... 20<br/>6.4.4 Add SIM Card Numbers ............................................................................................ 20<br/>6.4.5 Send SMS ................................................................................................................... 21<br/>6.4.6 Pause the SMS task .................................................................................................... 21<br/>6.4.7 Resume the paused SMS task .................................................................................... 22<br/>6.4.8 Delete the SMS task ................................................................................................... 22<br/></p>
+<p>Document No : xxxxxxx<br/>Version: 2.4.0<br/></p>
+<p>11/22/2024</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>6.4.9 Query the SMS task ................................................................................................... 23<br/></p>
+<p>7 Receive the SMS .............................................................................................................................. 23<br/>7.1 Topology ............................................................................................................................... 23<br/>7.2 Message description .............................................................................................................. 24<br/></p>
+<p>7.2.1 URL ............................................................................................................................ 24<br/>7.2.2 Parameter ................................................................................................................... 24<br/>7.2.3 Data ............................................................................................................................ 24<br/></p>
+<p>8 Query SMS ....................................................................................................................................... 25<br/>8.1 Query process ........................................................................................................................ 25<br/>8.2 Message description .............................................................................................................. 25<br/></p>
+<p>8.2.1 URL ............................................................................................................................ 25<br/>8.2.2 Parameter ................................................................................................................... 25<br/>8.2.3 Data ............................................................................................................................ 25<br/></p>
+<p>9 Query SMS statistics ........................................................................................................................ 26<br/>9.1 Message description .............................................................................................................. 27<br/></p>
+<p>9.1.1 URL ............................................................................................................................ 27<br/>9.1.2 Parameter ................................................................................................................... 27<br/>9.1.3 Response .................................................................................................................... 28<br/></p>
+<p>10 Query call statistics ........................................................................................................................ 29<br/>10.1 Message description ............................................................................................................ 29<br/></p>
+<p>10.1.1 URL .......................................................................................................................... 29<br/>10.1.2 Parameter ................................................................................................................. 29<br/>10.1.3 Response .................................................................................................................. 30<br/></p>
+<p>11 MMS receiving .............................................................................................................................. 31<br/>11.1 Configuration ...................................................................................................................... 31<br/>11.2 Message Push Format ......................................................................................................... 31<br/>11.3 Push Message Example ....................................................................................................... 32<br/></p>
+<p>12 ESIM .............................................................................................................................................. 33<br/>12.1 Query ESIM ........................................................................................................................ 33<br/></p>
+<p>12.1.1 URL .......................................................................................................................... 33<br/>12.1.2 Parameter ................................................................................................................. 33<br/>12.1.3 Response .................................................................................................................. 34<br/></p>
+<p>12.2 Write to ESIM ..................................................................................................................... 35<br/>12.2.1 URL .......................................................................................................................... 35<br/>12.2.2 Parameter ................................................................................................................. 35<br/>12.2.3 POST data ................................................................................................................ 35<br/>12.2.4 Response .................................................................................................................. 36<br/></p>
+<p>12.3 Delete ESIM ........................................................................................................................ 36<br/>12.3.1 URL .......................................................................................................................... 36<br/>12.3.2 Parameter ................................................................................................................. 36<br/>12.3.3 POST data ................................................................................................................ 36<br/>12.3.4 Response .................................................................................................................. 37<br/></p>
+<p>Document No : xxxxxxx<br/>Version: 2.4.0<br/></p>
+<p>11/22/2024</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p><b>1 Overview<br/></b>This document specifies HTTP SMS API of SKYLINE device, include SMS receiving, single<br/></p>
+<p>sending, group-sending and status of Sending task querying.<br/>Based on&#8216;SKYLINE SMS sending API&#8217;, this document extra support Group-<br/></p>
+<p>Sending and multi task and status report support in one message.<br/>This SMS API is still base on HTTP, and add POST request support, it provide multitask and status report by<br/></p>
+<p>JSON array. About JSON array format, please refer its standardization state.<br/></p>
+<p><b>2 Copyright Notice<br/></b>This document is just for SKYLINE R&amp;D team reference. If in need, it can be offered to a cooperation<br/></p>
+<p>project developer.<br/></p>
+<p><b>3 Interface Security<br/></b>This section describes a way to ciphertext the body content submitted using HTTP POST,<br/></p>
+<p>providing some security for the submitted data.<br/></p>
+<p><b><i>3.1 Interactiveprocess<br/></i></b></p>
+<p>To enable encrypted transmission, a handshake is required to establish a secure session, as<br/>shown in Figure 3.1, as described below:<br/></p>
+<p>1. Setting up a secure session:The client uses heep://host:port/crypt_sess.json to request the<br/>device to set up a session;<br/></p>
+<p>2. Secure session establishment Reply:After authenticating and setting the client,the device<br/>replies to the client&#8217;s request;<br/></p>
+<p>3. Common interface request:After the session is successfully established,the client use the<br/>ciphertext mode to submit data to the device through HTTP POST;<br/></p>
+<p>4. Reply on the common interface:After receiving the ciphertext POST, the device uses the<br/>negotiated encryption method decrypt POST,processes the data,and replies to the client in<br/>plaintext.<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 1<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP API Development<br/><b>3.1.1<br/></b></p>
+<p>Client Device<br/></p>
+<p>-1.session req&#8212;<br/></p>
+<p>&#8212;2.session resp<br/></p>
+<p>-3.POST req<br/></p>
+<p>-4.resp &#19968;<br/></p>
+<p><b><i>3.2 Interactive description<br/></i></b><i></i>The establishment of a secure session requires that client interacts with the device through the<br/></p>
+<p>special URL http://host:port/crypt sess.ison.During the interaction,the two parties need to exchange some<br/>information.The information described as follows.<br/></p>
+<p><b><i>3.2.1 Parameter<br/></i></b><i></i>Parameter Description Default Required Remark<br/></p>
+<p>username Device account None Y<br/></p>
+<p>cnonce Initial random string None Y A random stringprovided by The<br/>client.See section 3.3<br/></p>
+<p>expires Timeout value 180 N Life cycle ofa secure session<br/>auth Customer session ID None Y The ID of the session<br/></p>
+<p>(client-session-id),on the<br/>client.See section 3.3<br/>(part 1)for the calculation method.<br/></p>
+<p>crypt Encryption method None N The encryption method used in this<br/>secure session.The value is (seesection<br/>3.3<br/>For the calculation method<br/>Of each encryption method<br/>KEY).<br/></p>
+<p><b><i>3.2.2 Response message<br/></i></b><i></i>The reply information is in JSON format.The values are as follows:<br/></p>
+<p>Document No:XXXXXXX 11/22/2024 Page 2<br/>Version:2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/><b>Parameter Data type Description Default Required Remark<br/></b>code Int result code<br/></p>
+<p>None Y<br/></p>
+<p>Interface processing<br/>result,0 indicates<br/>Success,and non-0<br/>Indicates failure<br/></p>
+<p>desc String Instructions of the result<br/>None Y<br/></p>
+<p>When code is not 0,The<br/>Failure cause is<br/>Described.<br/></p>
+<p>Session String Device session ID<br/>None Y<br/></p>
+<p>ID of the session on the<br/>Device.<br/></p>
+<p>expires Int Timeout value<br/>180s N<br/></p>
+<p>Life cycle of a secure<br/>session<br/></p>
+<p><b><i>3.2.3 Subsequent URL requestparameters<br/></i></b><i></i>Agter an encrypted session in established,the username and password are not required for the URL of the<br/></p>
+<p>subsequent request,but the following parameters are required:<br/></p>
+<p><b>Parameter Description Default Required Remark<br/></b>seq sequence number<br/></p>
+<p>None Y<br/></p>
+<p>The sequence number should<br/>Be increments in subsequent<br/>requests.if the seq of the previous<br/>request is 10,than the seq of the next<br/>request must be greater than 10,In<br/>principle,it should be 11.<br/></p>
+<p>auth Customer session ID<br/>None Y<br/></p>
+<p>note that this field is not the same as<br/>the auth field<br/>Representing client-session-id<br/></p>
+<p>session Session ID<br/></p>
+<p>None Y<br/></p>
+<p>When a session is established,<br/>The device returns the session id to<br/>the client.<br/>&#65288;server-session-id&#65289;<br/></p>
+<p>expires Thmeout value<br/>180 N<br/></p>
+<p>Reset the life cycle of a secure<br/>session<br/></p>
+<p><b><i>3.3 Statement ofcalculation<br/></i></b></p>
+<p>There are some parameters in a secure session that need to be computed.The folllwing describes<br/>how there parameters are computed(the following &#8216;+&#8217;represents a connection string)<br/></p>
+<p>1. Auth(ID of an initial client session)=MD5(username + password + cnonce + url-resourse),url-resource is<br/>the rest of the URL excluding http://host:port and parameters.such as<br/>http: / /host:port/goip_get_status.html?url=xxx&amp;period=0 for this request,url-resource refers to<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 3<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>/goip_get_status.html,the rest of the fields are as described in section 3.2;<br/></p>
+<p>2. Auth(ID of the subsequent URL calculated in real time)= MD5(username + password + session + seq +<br/>url-resourse),url-resource is same as above, session is the server-session-ID returned when the session is<br/>established, the rest of the fields are as described in section 3.2;<br/></p>
+<p>3. Encrypt KEY=MD5(username + password + auth + session + seq),the auth field is the client-session-id<br/>calculated during the establishment of the session,that is,the auth calculated in step 1,session is the<br/>server-session-ID returned when the session is established,the rest of the fields are as described in section 3.2;<br/></p>
+<p><b>4 Status Notification<br/></b></p>
+<p>This device will send a HTTP POST request which include the device running status information<br/>to the SMS server when it reaches either of below conditions.<br/></p>
+<p>1. One of device port status changed.<br/>2. Community period expired.<br/><b><i>4.1.1 URL<br/></i></b></p>
+<p>Server can send a GET request to get the status on device by below URL:<br/>http://host:port/goip_get_status.html?url=xxx&amp;period=0<br/></p>
+<p>Device report url&#65306;<br/></p>
+<p>Server send a get request like above to specific the URL.<br/></p>
+<p><b><i>4.1.2 Parameter<br/></i></b><i></i>Parameter Description Default Required Remark<br/>Url Specific the report URL None N Tips:<br/></p>
+<p>Special characters need do URL<br/>encode<br/>Just need specific once time.<br/></p>
+<p>Period Report period 60 N &gt;0:Report status according to the<br/>specified report period,the<br/>minimum value is 60,the unit is<br/>second 0:cancel status report<br/></p>
+<p>all_sims Get all the card status 0 N 0&#65306;disable 1&#65306;enable<br/>all_slots Get the status of all card slots 0 N 0&#65306;disable 1&#65306;enable<br/></p>
+<p><b><i>4.1.3 Dev-status message<br/></i></b><i></i>Device send &#8217;dev-status &#8217; to server periodically.<br/>dev-status message(information in HTTP message Body) is a JSON array string that comprised of ports<br/></p>
+<p>status. Parameter Content-Type in HTTP head should set to &#8220;application/json;charset=utf-8&#8221;.<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 4<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>{&#8220;type&#8221;:&#8220;dev-status&#8221; &#65292;&#8220;seq&#8221;&#65306;1&#65292;&#8220;expires&#8221;:180,&#8220;mac&#8221;:&#8220;00-30-f1-01-02-03&#8221;,&#8220;ip&#8221;&#65306;<br/>&#8220;192.168.1.67&#8221;,&#8220;max-ports&#8221;:32, &#8220;max-slots&#8221;:4&#65292;&#8220;status&#8221;:[{&#8220;port&#8221;:&#8220;1A&#8221;,&#8230;},{&#8220;port&#8221;:&#8220;2B&#8221;,&#8230;},&#8230;,<br/>{&#8220;port&#8221;:&#8220;32D&#8221;,&#8230;}]}<br/></p>
+<p>Components state:<br/>Parameter Data<br/></p>
+<p>type<br/><b>Description<br/></b></p>
+<p><b>Default Required<br/></b></p>
+<p>Type String Message type. None Y&#65288;dev-status&#65289;<br/>seq Int Device status message sequence<br/></p>
+<p>number, start from 1.<br/>None Y<br/></p>
+<p>expires Int Dev-status sending period. 180s N<br/>mac String Device MAC. None Y<br/>ip String Device IP address. None Y<br/>max-ports Int Total ports of device. None Y<br/>max-slots String Total SIM slots of device. 1 N<br/>status array Status of device port. None Y<br/></p>
+<p>For the description of the port status, see 3. 1.4 [Port Status]<br/></p>
+<p><b><i>4.1.4 Port -status message<br/></i></b><i></i>Any one port status changed, device will send &#8216;port-status &#8217; message to server<br/></p>
+<p>immediately.<br/>Status message (information in HTTP message Body) is a JSON array string that<br/></p>
+<p>comprised of ports status. Parameter Content-Type in HTTP head should set to<br/>&#8220;application/ json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&#8220;type&#8221;:&#8220;port-status&#8221; </b>&#65292;<b>&#8220;port&#8221;:&#8220;2B&#8221;,&#8220;seq&#8221;</b>&#65306;<b>1</b>&#65292;<b>&#8220;status&#8221;:&#8220;3 OK&#8221;,&#8220;bal&#8221;</b>&#65306;<b>&#8220;100.00&#8221;</b>&#65292;<b>&#8220;opr&#8221;</b>&#65306;<b>&#8220;46000<br/>China Mobile&#8221;,&#8220;sn&#8221; :&#8220;139xxxxxxxxx&#8221;, &#8220;imei&#8221; :&#8220;86xxxxxxxxxxxxx&#8221;</b>&#65292;<b>&#8220;imsi&#8221; :&#8220;xxx&#8221;</b>&#65292;<b>&#8220;iccid&#8221;</b>&#65306;<b>&#8220;xxx&#8221;}<br/></b></p>
+<p>Components state:<br/>Parameter Data<br/></p>
+<p>type<br/><b>Description<br/></b></p>
+<p><b>Default Required<br/></b></p>
+<p>Type String Message type None Y&#65288;port-status&#65289;<br/>port String Describe the current working port and<br/></p>
+<p>SIM slot. Like 1.01,1.02.....32.04<br/>None Y<br/></p>
+<p>sim String Simpool&#8217;s identification None N<br/>seq Int The port is incremented from port 1<br/>st string Port status code + detail<br/></p>
+<p>0&#65306;No SIM card<br/>1&#65306; Exist idel SIM card<br/>2&#65306; Registering<br/>3&#65306; Registered<br/>4&#65306; call connected<br/>5&#65306; no balance or alarm<br/>6&#65306; Register failed<br/>7&#65306; SIM card locked by device<br/>8&#65306; SIM card locked by operator<br/></p>
+<p>None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 5<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>9&#65306; Recognize SIM card error<br/>11&#65306;Card Detected<br/>12&#65306;User locked<br/>13&#65306;Port inter-calling<br/>14&#65306;Inter-calling holding<br/>15&#65306;Access Mobile Network<br/>16&#65306;module Response timeout<br/></p>
+<p>bal Floating<br/>point<br/></p>
+<p>SIM card balance(yy.mm)<br/>None Y<br/></p>
+<p>opr String SIM card operator name and ID valid<br/>while parameter &#8220;st&#8221; equal to 3 or 4<br/></p>
+<p>None N<br/></p>
+<p>sn string SIM number None N<br/>imei string IMEI ofmodule None N<br/>active int Current card.<br/></p>
+<p>1:yes; 0:no<br/>None N<br/></p>
+<p>imsi string IMSI num of SIM card None N<br/>iccid string ICCID num of SIM card None N<br/>inserted int A card is inserted into a slot. 1:yes; 0:no None N<br/></p>
+<p>Slot_active int Whether the card slot is<br/>enabled.1:enabled;0:disabled<br/></p>
+<p>None N<br/></p>
+<p>sig int Signal value of the module None N<br/>led int Led is enabled or not, 1 is yes, 0 is no None N<br/></p>
+<p><b>5 Operate command sending<br/></b>Device offer API to server to change device status, like change sim card, lock/unlock port, reboot device.<br/></p>
+<p>About USSD command sending, please refer to &#8220;SKYLINE HTTP-USSD API(V1.0).docx&#8221; ;<br/>Device will send message to the server by port status notification when lock port or change SIM card.<br/></p>
+<p><b><i>5.1.1 URL<br/></i>http:/ /host:port/goip_send_cmd.html<br/></b>host: Device IP address<br/>port: Device webpage management port, default value is 80.<br/></p>
+<p><b><i>5.1.2 Parameter<br/></i></b></p>
+<p>Parameter <b>Description Default Required Ramark<br/></b>Version API version 1.1 Y This document describes<br/></p>
+<p>specification support only<br/>username Device account None Y<br/>Password Device password None Y<br/>Op Operation description None<br/></p>
+<p>N<br/></p>
+<p>get:get device configuration<br/>set: set device configuration<br/>lock: lock port<br/>unlock:unlock port<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 6<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>switch:switch SIM card<br/>reset: reboot module<br/>save: save configuration<br/>reboot:reboot device<br/>ledon: turn on led<br/>ledoff: turn off led<br/></p>
+<p>par_name(n) Parameter name of the<br/>get/set operation<br/></p>
+<p>The value<br/>of the set<br/>operation<br/></p>
+<p>N The name of the parameter to<br/>be actually operated. If the<br/>parameter is an array<br/>parameter, you can use<br/>parentheses with parameters,<br/>and the subscript starts from 0.<br/></p>
+<p>Sms_url: destination URL for<br/>SMS push<br/></p>
+<p><b><i>5.1.3 Data<br/></i></b><i></i>Device support a single command to operate multi-ports and multi-commands to<br/></p>
+<p>operate different port.<br/>Command sending message (information in HTTP message Body) is a JSON array<br/></p>
+<p>string that composed by one or more command. Parameter &#8220;Content-Type&#8221; in HTTP<br/>head should set to &#8220;application/json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&quot;type&quot;:&quot;command&quot;, &quot;op&quot;:&quot;lock&quot;, &quot;ports&quot;:&quot;1A,2B,3C,4-32&quot;, &quot;ops&quot;:[{&quot;op&quot;:&quot;lock&quot;, &quot;ports&quot;:&quot;1A&quot;},<br/>{&quot;op&quot;:&quot;switch&quot;, &quot;ports&quot;:&quot;2B&quot;}]}<br/></b></p>
+<p>Components state:<br/><b>Parameter Data<br/></b></p>
+<p><b>Type<br/>Description<br/></b></p>
+<p><b>Default Required<br/></b></p>
+<p>type string Message type None Y&#65288;command&#65289;<br/>op string operation type<br/></p>
+<p>lock: lock port<br/>unlock: unlock port<br/>switch: switch SIM card<br/>reset: reboot module<br/>save: save configuration<br/>reboot: reboot device<br/>multiple: multiple commond<br/>ledon: turn on led<br/>ledoff: turn off led<br/></p>
+<p>None Y<br/></p>
+<p>ports string the port NO. need to<br/>operate.<br/>all,*: all ports<br/>It is valid while op<br/>parameter equal to<br/>lock/unlock/switch/reset/ledon/ledoff<br/></p>
+<p>None<br/></p>
+<p>Y<br/>&#65288;op=lock|<br/>op=unlock|<br/>op=switch|<br/>op=reset|<br/>op=ledon|<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 7<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>When op=lock|unlock, if you<br/>do not specify the SIM slot,<br/>the entire port will be<br/>locked/unlocked.<br/>When op=switch, it means to<br/>switch to this location.<br/>When op=reset, only the port<br/>number is valid.<br/></p>
+<p>op=ledoff&#65289;<br/></p>
+<p>ops array Multi-command array<br/>Valid when op is multiple<br/></p>
+<p>None<br/>Y<br/></p>
+<p>(op= multiple)<br/>Attributes of tasks in json data<br/></p>
+<p><b>Parameter Data<br/>type<br/></b></p>
+<p><b>Description<br/>Default Required<br/></b></p>
+<p>op string Operation type<br/>lock: lock port<br/>unlock:unlock port<br/>switch:switch SIM card<br/>reset: reboot module<br/>ledon: turn on led<br/>ledoff: turn off led<br/></p>
+<p>None Y<br/></p>
+<p>ports string The port that needs to perform the<br/>operation:<br/>When op=lock|unlock, if you do not<br/>specify the SIM slot, the entire port will<br/>be Locked /unlocked.<br/>When op=switch, it means to switch to<br/>this location.<br/>When op=reset, only the port number is<br/>valid.<br/></p>
+<p>None Y<br/></p>
+<p><b>6 SMS Sending<br/></b>Server send SMS sending request to device by Ethernet, and it keep sending task in a JSON array.<br/></p>
+<p><b><i>6.1 Topology<br/></i></b><i></i>While device and server not in a same LAN, device HTTP port should been Nat<br/></p>
+<p>mapping out on boundary router, so server can send message to device actively.<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 8<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP API Development<br/></p>
+<p>serter<br/></p>
+<p>Intranet<br/></p>
+<p>device<br/>DZM<br/></p>
+<p>de<br/></p>
+<p><b><i>6.2 SMS sendingflow chart<br/></i></b><i></i>Server can send SMS by GET/POST request.GET request use API specified in'SKYLINE<br/></p>
+<p>http SMS sending API'document.POST request can be used to send long SMS(more that 300 characters)or send<br/>more that one SMS in a request message.<br/></p>
+<p><b><i>6.2.1 SMS sending<br/></i></b><i></i>After got the SMS sending request from server,device will design a task ID(related to the sending report)to<br/></p>
+<p>create one or more SMS sending task,and after those task finished,device will send 200ok message to server.<br/><b><i>6.2.2 Sending status report<br/></i></b></p>
+<p>While SMS send successfully/failed/timeout,device will put the result in cache,after meet condition(cache<br/>storage full or cache time reached ),device will send POST request to report one or more task execute result.If it is<br/>group sending,device will report execute result periodically until all num in this group sending task get a result.<br/></p>
+<p><b><i>6.2.3 Sending status query<br/></i></b><i></i>Server can send a GET request to query task sending status,like successfully send statics,failed<br/></p>
+<p>information(num and reason),current sending num and so on.<br/><b><i>6.2.4 Pause the SMS task<br/></i></b></p>
+<p>When a SMS task is still waiting to be sent in the send queue,one or more SMS can be paused.<br/><b><i>6.2.5 Resume the paused SMS task<br/></i></b></p>
+<p>Resume the sending of one or more suspended SMS tasks.<br/><b><i>6.2.6 Delete the SMS task<br/></i></b></p>
+<p>Delete one or more SMS tasks waiting to be sent in the send queue.<br/><b><i>6.2.7 Query the SMS task<br/></i></b></p>
+<p>Query the SMS task waiting to be sent in the send queue.<br/></p>
+<p><b><i>6.3 Message description<br/>6.3.1 SMS Sending<br/>6.3.2 URL<br/></i></b></p>
+<p><b>http://host:port/goip_post_sms.html<br/></b>host:Device IPaddress<br/>port:Device webpage management port,default value is 80.<br/></p>
+<p>6.3.2.1 Parameter<br/>Document No:XXXXXXX 11/22/2024 Page 9<br/>Version:2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p>Parameter <b>Description Default Required Remark<br/></b>version API version 1.0 N 1.0&#65306;Compatible with previous<br/></p>
+<p>API<br/>1. 1: Support for the<br/>description of<br/>this document<br/></p>
+<p>username Device username None Y<br/>password Device password None Y<br/></p>
+<p>Note: All URL parameters only appear in the GET request. For POST, it will appear in<br/>the JSON attribute of the body segment. The following will not be explained.<br/></p>
+<p>6.3.2.2 Data<br/>The task data (the body segment of the HTTP message) is a JSON format string<br/></p>
+<p>consisting of one or more tasks, and the value of the HTTP header parameter<br/>&quot;Content-Type&quot; is &#8220;application/json;charset=utf-8&#8221;&#12290;<br/></p>
+<p><b>{&#8220;type&#8221;:&#8220;send-sms&#8221;,&#8220;task_num&#8221;:n, &#8220;tasks&#8221;:[{&#8220;tid&#8221;:tid_1, &#8230;},&#8230;</b>&#65292;<b>{&#8220;tid&#8221;:tid_n, &#8230;}]}<br/></b>Components state:<br/></p>
+<p>Parameter Data<br/>type<br/></p>
+<p><b>Description<br/>Default Required<br/></b></p>
+<p><b>Remark<br/></b></p>
+<p>type string Message type None N<br/>sr url_ string Status report forward url System<br/></p>
+<p>configuratio<br/>n<br/></p>
+<p>N<br/></p>
+<p>sr cnt_ string Max num of SMS<br/>result can keep in<br/>cache.<br/></p>
+<p>100 N<br/>1. The buffer number<br/>reaches this value,the<br/>buffered report is sent<br/>immediately, and the timer is<br/>reset.<br/></p>
+<p>sr_prd Int The max time SMS<br/>result can keep in<br/>cache<br/></p>
+<p>30 N<br/>2. The time expired, even<br/>if not enough reports are<br/>received, send immediately<br/>, then reset the timer<br/></p>
+<p>sms url_ string SMS forward URL System<br/>configuratio<br/></p>
+<p>n<br/>N<br/></p>
+<p>sms cnt_ Int Max num of SMS can<br/>keep in cache<br/></p>
+<p>1 N<br/></p>
+<p>1. When the buffer number<br/>reaches this value, the<br/>buffered SMS is sent<br/>immediately and the timer is<br/>reset.<br/>2. In order to be<br/>compatible with old<br/>customers, this parameter must<br/>be set to a value greater than 1,<br/>in order to buffer the received<br/>SMS and use the new sending<br/>mechanism.<br/></p>
+<p>sms_prd Int Max time SMS can 30 N 1. The time expired, even<br/>if not enough SMS is<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 10<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>keep in cache received, it is sent<br/></p>
+<p>immediately, then the timer is<br/>reset.<br/></p>
+<p>task_num string Total task 1 Y<br/>tasks Array Specific SMS send task None Y<br/></p>
+<p>Attributes of tasks in json data<br/><b>Parameter Data type Description Default Required<br/></b></p>
+<p>tid Int Task ID None Y<br/>from String Use&#8216;,&#8217;&#8216;-&#8217;to assign more than one port(<b>from<br/></b></p>
+<p><b>channel 1</b>)<br/>Choose of<br/>device<br/></p>
+<p>N<br/></p>
+<p>to string one or more<b>(use &#8216;,&#8217;to distinguish</b>) recipients None Y<br/>to_all String <b>1 </b>represents all ports 1 N<br/>sms string SMS content None Y<br/>chs string Character coding set (<b>utf8|base64</b>) utf8 N<br/>coding Int pecific the SMS codec:<br/></p>
+<p>0:not assign<br/>1:USC2<br/>2:7bit<br/></p>
+<p>0 N<br/></p>
+<p>smstype Int SMS type<br/>0&#65306;SMS&#65292;<br/>1&#65306;MMS&#65292;<br/>2&#65306;MMS with multiple numbers and multiple<br/></p>
+<p>subject<br/>0 N<br/></p>
+<p>smstitle string MMS subject&#65306;MMS subject format is UTF-8&#65292;this<br/>parameter could be empty;<br/></p>
+<p>&#8220;&#8221; N<br/></p>
+<p>to_title_arr<br/>ay<br/></p>
+<p>Array Multiple MMS recipients and subject arrays. This field is<br/>valid only when smstype=2;<br/>Format&#65306;<br/>&quot;to_title_array&quot;:[[&quot;number1&quot;,&quot;titile1&quot;],[&quot;number2&quot;,&quot;titile2&quot;],<br/>...[&quot;number n&quot;,&quot;titile n&quot;]]<br/></p>
+<p>None N<br/></p>
+<p>attachments string 1&#12289;MMS attachment&#65292;This field take effect only when<br/>smstype=1 or 2;<br/>2&#12289;Field content format:<br/></p>
+<p>&#8220;File type1|base64 code file content 1;<br/>File type2|base64 code file content 2;<br/>......<br/>File type n|base64 code file content n&#8221;<br/></p>
+<p>3&#12289;Remarks&#65306;<br/>a. There can be a most of 5 attachment,all attachment<br/></p>
+<p>total length cannot exceed 100K,at present only<br/>support jpg&#12289;gif&#12289;txt&#12289;mp3 formatted file.<br/></p>
+<p>&#8220;&#8221; N<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 11<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>b. File type and file content use symbol | separate<br/>c. Attachment is could be empty,send the content of the<br/></p>
+<p>SMS filed as a TXT attachment<br/>4&#12289;example&#65306;<br/>&#8220;txt|zsSxvg==;jpg|4AAQSkZJRgABAgAAZABk&#8221;<br/></p>
+<p>smsc string Store the SMSC number. &#8220;&#8221; N<br/>intvl string Interval of 2 SMS while device sending them(ms) &#8220;0&#8221; N<br/>tmo Int Max time while waiting sending result(second). 30 N<br/>sdr Int If enable the successfully send report.<br/></p>
+<p>1:enable,0:disable.<br/>Disable N<br/></p>
+<p>fdr Int If enable the failed report.1:enable,0:disable. Enable N<br/>dr Int If enable SMS delivery<br/></p>
+<p>report. 1:enable,0:disable.<br/>Disable N<br/></p>
+<p>sr_prd Int Status report period (seconds), 0: not on, &gt;0:<br/>on<br/>Control only the period in which a single task<br/>generates a report<br/></p>
+<p>60 N<br/></p>
+<p>sr cnt Int Single-state report SMS number, less than 1 will<br/>use the default value<br/>Control only the number of processed messages<br/>that have been reported by a single task<br/></p>
+<p>10 N<br/></p>
+<p>Tips:<br/>1. While not choose a port, device will pick up a random port to send SMS to every recipient.<br/>2. While chose more than one ports, and just one SMS recipient , then device will use all chose port to<br/></p>
+<p>send SMS to this recipient.<br/>3. If more ports, and more recipient designed, then every port will send SMS to every recipient<br/></p>
+<p>separately.<br/>6.3.2.3 Response<br/></p>
+<p>Task sending is a JSON array composed by one or more task send status,<br/>Parameter &#8220;Content-Type&#8221; in HTTP head should set to<br/>&#8220;application/json;charset=utf- 8&#8221; .<br/></p>
+<p><b>{ &#8220;code&#8221;:200, &#8220;reason&#8221;</b>&#65306;<b>&#8220;OK&#8221;</b>&#65292;<b>&#8220;type&#8221;:&#8220;task-status&#8221;, &#8220;status&#8221;:[{&#8220;tid&#8221; :tid_1, &#8220;status&#8221;</b>&#65306;<b>&#8220;0 OK&#8221;},&#8230;</b>&#65292;<br/><b>{&#8220;tid&#8221; :tid_n, &#8220;status&#8221;</b>&#65306;<b>&#8220;2 Invalid Port&#8221;}]}<br/></b></p>
+<p>Status components state:<br/>Parameter Data type <b>Description Default Required<br/></b></p>
+<p>tid Int Task ID None Y<br/>status String Task status code<br/></p>
+<p>0&#65306;OK<br/>1&#65306;Invalid User<br/>2&#65306;Invalid Port<br/>3&#65306;USSD Expected<br/>4&#65306;Pending USSD<br/>5&#65306;SIM Unregistered<br/></p>
+<p>None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 12<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>6&#65306;Timeout<br/>7&#65306;Server Error<br/>8&#65306;SMS expected<br/>9&#65306;TO expected<br/>10&#65306;Pending Transaction<br/>11&#65306;TID Expected<br/>12&#65306;FROM Expected<br/>13&#65306;Duplicated TaskId<br/>14: Unauthorized<br/>15: Invalid CMD<br/>16: Too Many Task<br/>17: MMS Title expected<br/>18&#65306;Too Many MMS Attachments<br/>19&#65306;MMS Attachments expected<br/>20&#65306;MMS Attachments Cache size Overlimit<br/></p>
+<p>If task status ID not equal to 0, then means this<br/>task not received by device.<br/></p>
+<p><b><i>6.3.3 Task send report<br/></i></b><i></i>6.3.3.1 URL<br/></p>
+<p>Server or device configuration decision.<br/>6.3.3.2 Parameter<br/></p>
+<p>Parameter <b>Description<br/>Default Requi<br/></b></p>
+<p><b>red<br/>Remark<br/></b></p>
+<p>Version API version 1.1 Y This document describes<br/>specification support only<br/></p>
+<p>6.3.3.3 Data<br/>Status-report message is a JSON array composed by one or more task send<br/></p>
+<p>report. Parameter &#8220;Content-Type&#8221; in HTTP head should set to<br/>&#8220;application/ json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&#8220;type&#8221;:&#8220;status-report&#8221;,&#8220;rpt_num&#8221;:n,&#8220;rpts&#8221;:[{&#8220;tid&#8221;:tid_1, &#8230;},&#8230;</b>&#65292;<b>{&#8220;tid&#8221;:tid_n, &#8230;}]}<br/></b>Components state:<br/></p>
+<p><b>Parameter Data<br/>type<br/></b></p>
+<p><b>Description<br/>Default Required<br/></b></p>
+<p>type string Message type None Y&#65288;status-report&#65289;<br/>rpt_num string Report num 1 Y<br/>rpts Array Detail status report None Y<br/></p>
+<p>Attributes reported in json data<br/><b>Parameter Data type Description Default Required<br/></b>tid Int related task ID . None Y<br/>sending Int total num of SMS in sending. None Y<br/>sent Int total num of SMS successfully send. None Y<br/>failed Int total num of SMS failed send. None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 13<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>unsent Int total SMS in cache waiting for send None Y<br/>sdr array Successfully send details(one list for<br/></p>
+<p>one num) Success report is a array,<br/>[0]: recipients num index(based on<br/>group sending),int<br/>[1]: num, string<br/>[2]: SMS sending port(1.01,2.02,...),<br/>string<br/>[3]: SMS send timestamp in UTC time, int<br/></p>
+<p>None N<br/></p>
+<p>fdr array Fail send details(one num one list)<br/>[0]: recipients num index(based on<br/>group sending),int<br/>[1]: num, string<br/>[2]: SMS sending port(1.01,2.02,...),<br/>string<br/>[3] : SMS send timestamp in UTC time.int<br/>[4] : Progress reason, code+details<br/>[5] : Carrier reason, code+ description. Valid when <br/></p>
+<p>[4] is failed to send<br/></p>
+<p>None N<br/></p>
+<p>Tips&#65306;<br/>1. tid related to the task ID in the send-sms message.<br/>2. sending, sent, failed are accumulated num in one task.<br/>3. Sdr(successfully send record) list records between 2 status-report, server should keep before details.<br/>4. fdr(failed detail record) list records between 2 status-report, server should keep before details.<br/></p>
+<p><b><i>6.3.4 Pause the SMS task<br/></i></b><i></i>6.3.4.1 URL<br/></p>
+<p><b>http:/ /host:port/goip_pause_sms.html<br/></b>host: Device IP address<br/>port: Device webpage management port, default value is 80.<br/></p>
+<p>6.3.4.2 Parameter<br/><b>Parameter Description Default Required Remark<br/></b>version API version 1.1 Y This document describes<br/></p>
+<p>specification support only<br/>username Device username None Y<br/>password Device password None Y<br/></p>
+<p>6.3.4.3 Data<br/>The data (the body segment of the HTTP message) is a JSON format string<br/></p>
+<p>consisting of one or more tasks, and the value of the HTTP header parameter<br/>&quot;Content-Type&quot; is &#8220;application/json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&#8220;tids&#8221; :[tid1,tid2,&#8230;,tidn]}<br/></b>Components state&#65306;<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 14<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>Parameter Data<br/></p>
+<p>type<br/><b>Description<br/></b></p>
+<p><b>Default Required<br/></b></p>
+<p>tids String Restore one or more tasks ID<br/>that are sent. None<br/></p>
+<p>No. When there is<br/>no field, all send<br/>tasks are<br/>suspended.<br/></p>
+<p>The body of the query response is a JSON format string consisting of one or<br/>more tasks. The value of the HTTP header parameter &quot;Content-Type&quot; is<br/>&quot;application/json; charset=utf-8&quot;.<br/></p>
+<p><b>{&#8220;code&#8221; :200,&#8220;reason&#8221;</b>&#65306;<b>&#8220;OK&#8221;, &#8220;results&#8221; :[{&#8220;tid&#8221;:tid_1, &#8220;status&#8221;</b>&#65306;<br/><b>&#8220;0 OK&#8221;},&#8230;</b>&#65292;<b>{&#8220;tid&#8221; :tid_n, &#8220;status&#8221;</b>&#65306;<b>&#8220;2 Invalid Port&#8221;}]}<br/></b></p>
+<p>Components state&#65306;<br/>Parameter Data type <b>Description Default Requ<br/></b>code Int Interface processing result code None Y<br/>reason String Interface processing results None Y<br/>results Array Task processing results. When there is no<br/></p>
+<p>tids in the request, this field is not included<br/>in the result.<br/></p>
+<p>None N<br/></p>
+<p>tid Int Task ID None N<br/>status String Task status code<br/></p>
+<p>0&#65306;OK<br/>1&#65306;Invalid User<br/>2&#65306;Invalid Port<br/>3&#65306;USSD Expected<br/>4&#65306;Pending USSD<br/>5&#65306;SIM Unregistered<br/>6&#65306;Timeout<br/>7&#65306;Server Error<br/>8&#65306;SMS expected<br/>9&#65306;TO expected<br/>10&#65306;Pending Transaction<br/>11&#65306;TID Expected<br/>12&#65306;FROM Expected<br/></p>
+<p>If task status ID not equal to 0, then means this task<br/>not received by device.<br/></p>
+<p>None N<br/></p>
+<p><b><i>6.3.5 Resume thepaused SMS task<br/></i></b><i>6.3.5.1 URL<br/></i></p>
+<p><b>http:/ /host:port/goip_resume_sms.html<br/></b>host: device IP address<br/>port: device web port,the default is 80,optional.<br/></p>
+<p>6.3.5.2 Parameter<br/></p>
+<p>Parameter <b>Description Default Required Remark<br/></b>version API version 1.1 Y This document<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 15<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>describes<br/>specification support<br/>only<br/></p>
+<p>username Device username None Y<br/>password Device password None Y<br/></p>
+<p>6.3.5.3 Data<br/>Data(The body segment of the HTTP message)is a JSON array composed by one<br/></p>
+<p>or more task. Parameter Content-Type in HTTP head should set to<br/>&#8220;application/ json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&#8220;tids&#8221; :[tid1,tid2,&#8230;,tidn]}<br/></b>Attributes instructions&#65306;<br/></p>
+<p>Parameter Data<br/>type<br/></p>
+<p><b>Description<br/>Default Required<br/></b></p>
+<p>tids String The task ID to be restored<br/>None<br/></p>
+<p>NO. Restore all<br/>sending tasks<br/>when there is no<br/>field<br/></p>
+<p>The body of response is a JSON array composed by one or more task ID.<br/>Parameter &#8220;Content-Type&#8221; in HTTP head should set to&#8220;application/ json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&#8220;code&#8221; :200,&#8220;reason&#8221;</b>&#65306;<b>&#8220;OK&#8221;, &#8220;results&#8221; :[{&#8220;tid&#8221;:tid_1, &#8220;status&#8221;</b>&#65306;<br/><b>&#8220;0 OK&#8221;},&#8230;</b>&#65292;<b>{&#8220;tid&#8221; :tid_n, &#8220;status&#8221;</b>&#65306;<b>&#8220;2 Invalid Port&#8221;}]}<br/></b></p>
+<p>Attributes instructions:<br/></p>
+<p>Parameter Data type <b>Description Default Required<br/></b>code Int Interface processing result code None Y<br/>reason string Interface processing results None Y<br/>results array Task processing results None Y<br/>tid Int Task ID None Y<br/>status string The status code and reason description of<br/></p>
+<p>the task<br/>0&#65306;OK<br/>1&#65306;Invalid User<br/>2&#65306;Invalid Port<br/>3&#65306;USSD Expected<br/>4&#65306;Pending USSD<br/>5&#65306;SIM Unregistered<br/>6&#65306;Timeout<br/>7&#65306;Server Error<br/>8&#65306;SMS expected<br/>9&#65306;TO expected<br/>10&#65306;Pending Transaction<br/>11&#65306;TID Expected<br/>12&#65306;FROM Expected<br/></p>
+<p>If the task's response code is not 0, it<br/>indicates that the task is not accepted by the device.<br/></p>
+<p>None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 16<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/><b><i>6.3.6 Delete the SMS task.<br/></i></b><i>6.3.6.1 URL<br/></i></p>
+<p><b>http:/ /host:port/goip_remove_sms.html<br/></b>host: device IP address.<br/>port: device web port,the default is 80,optional.<br/></p>
+<p>6.3.6.2 Parameter<br/>Parameter <b>Description Default Required Remark<br/></b>version API version 1.1 Y This document describes<br/></p>
+<p>specification support only<br/>username Device username None Y<br/>password Device password None Y<br/></p>
+<p>6.3.6.3 Data<br/>Data(The body segment of the HTTP message)is a JSON array composed by one<br/></p>
+<p>or more task. Parameter Content-Type in HTTP head should set to<br/>&#8220;application/ json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&#8220;tids&#8221; :[tid1,tid2,&#8230;,tidn]}<br/></b>Attributes instructions&#65306;<br/></p>
+<p>Parameter Data<br/>type<br/></p>
+<p><b>Description<br/>Default Required<br/></b></p>
+<p>tids String The task ID to be restored.<br/>None<br/></p>
+<p>NO. Restore all<br/>sending<br/>tasks when there<br/>is no<br/>field.<br/></p>
+<p>The body of response is a JSON array composed by one or more task ID. Parameter &#8220;Content-Type&#8221; in HTTP<br/>head should set to &#8220;application/json;charset=utf- 8&#8221; .<br/></p>
+<p><b>{&#8220;code&#8221; :200,&#8220;reason&#8221;</b>&#65306;<b>&#8220;OK&#8221;, &#8220;results&#8221; :[{&#8220;tid&#8221;:tid_1, &#8220;status&#8221;</b>&#65306;<br/><b>&#8220;0 OK&#8221;},&#8230;</b>&#65292;<b>{&#8220;tid&#8221; :tid_n, &#8220;status&#8221;</b>&#65306;<b>&#8220;2 Invalid Port&#8221;}]}<br/></b></p>
+<p>Attributes instructions&#65306;<br/><b>Parameter Data type Description Default Required<br/></b>code Int Interface processing result code None Y<br/>reason string Interface processing results None Y<br/>results array Task processing results<br/></p>
+<p>If there is no TIDS in the request, this field is not<br/>included in the result<br/></p>
+<p>None Y<br/></p>
+<p>tid Int Task ID None Y<br/>status string The status code and reason description of<br/></p>
+<p>the task<br/>0&#65306;OK<br/>1&#65306;Invalid User<br/>2&#65306;Invalid Port<br/>3&#65306;USSD Expected<br/>4&#65306;Pending USSD<br/></p>
+<p>None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 17<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>5&#65306;SIM Unregistered<br/>6&#65306;Timeout<br/>7&#65306;Server Error<br/>8&#65306;SMS expected<br/>9&#65306;TO expected<br/>10&#65306;Pending Transaction<br/>11&#65306;TID Expected<br/>12&#65306;FROM Expected<br/>If the task's response code is not 0, it<br/>indicates that the task is not accepted by the device.<br/></p>
+<p><b><i>6.3.7 Query the SMS task<br/></i></b><i></i>6.3.7.1 URL<br/></p>
+<p><b>http: / /host:port/goip_get_tasks.html?version=xxx&amp;username=root&amp;password=root&amp;port=xxx&amp;<br/>pos=xxx&amp;num=xxx&amp;has_content=xx<br/></b></p>
+<p>host: device IP address.<br/>port: device web port,the default is 80,optional.<br/></p>
+<p>6.3.7.2 Parameter<br/><b>Parameter Description Default Required Remark<br/></b>version API version 1.1 Y This document describes<br/></p>
+<p>specification support only<br/>username Device username None Y<br/>password Device passeord None Y<br/>port Send port. Starting from 1 None Y<br/>Has_content Whether to bring a text<br/></p>
+<p>message in the result.<br/>0 N<br/></p>
+<p>0 &#8211;Do not return text<br/>message content.<br/>1 &#8211;return text message<br/>content<br/></p>
+<p>Pos The starting position of the<br/>request.<br/>0 represents the<br/>beginning of the first task.<br/></p>
+<p>None<br/></p>
+<p>Y<br/>The location of this field is in<br/>the order of the submission<br/>of the message task order<br/></p>
+<p>Num The number of<br/>Request messages.<br/></p>
+<p>10 N<br/></p>
+<p>The body of response is a JSON array composed by one or more task ID. Parameter Content-Type in HTTP<br/>head should set to &#8220;application/json;charset=utf-8&#8221; .<br/></p>
+<p><b>{&#8220;tids&#8221; :[tid1,tid2,&#8230;,tidn]}<br/></b>Attributes instructions&#65306;<br/></p>
+<p><b>Parameter Data<br/>type<br/></b></p>
+<p><b>Description<br/>Default Required<br/></b></p>
+<p>tids String The task ID to be query. None N<br/></p>
+<p>The body of response is a JSON array composed by one or more task ID.<br/>Parameter &#8220;Content-Type&#8221; in HTTP head should set to&#8220;application/ json;charset=utf-8&#8221; .<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 18<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/><b>{ &#8220; code &#8221; :200, &#8220; reason &#8221; </b>&#65306; <b>&#8220; OK &#8221; , &#8220;total_num&#8221;:n&#8220;task_num&#8221;:n, &#8220;tasks&#8221;:[{&#8220;tid&#8221;:tid_1, &#8230;},&#8230;</b>&#65292;<br/></p>
+<p><b>{&#8220;tid&#8221; :tid_n, &#8230;}]<br/></b>Attributes instructions:<br/></p>
+<p><b>Parameter Data type Description Default Required<br/></b>code Int Interface processing result code. None Y<br/>reason string Interface processing results None Y<br/>Total_num Int The number of tasks. None Y<br/>Task_num Int Query the number of tasks returned. None Y<br/>Tasks Array Query the returned array of tasks. None Y<br/>Attributes instructions of task:<br/>Tasks array Query the returned array of tasks. None Y<br/>Tid Int Task id None Y<br/>From string One or more (commas, short horizontal<br/></p>
+<p>connections) send ports (from 1)<br/>Device<br/>selection<br/></p>
+<p>N<br/></p>
+<p>To string One or more (comma connected) message<br/>receiver number.<br/></p>
+<p>None Y<br/></p>
+<p>Sms string Message content None N<br/>Chs string Code set&#65288;utf8|base64&#65289; Utf-8 N<br/>Coding Int Specifies the encoding of the message sent.<br/></p>
+<p>0&#65306;Do not specify<br/>1&#65306;USC2<br/>2: 7bit<br/></p>
+<p>0 N<br/></p>
+<p>State Int Task status:<br/>0 - normal, 1 - suspended.<br/></p>
+<p>None Y<br/></p>
+<p><b><i>6.4 Example<br/>6.4.1 Status notification<br/></i></b></p>
+<p>Url&#65306;<br/><b>http://192.168.1.67:80/goip_get_status.html</b>?url=http://192.168.1.142&amp;period=60&amp;username=root&amp;password=root<br/></p>
+<p>Response&#65306;<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 19<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p><b>SKYLINE HTTP API Development<br/></b></p>
+<p>&quot;sn&quot;:&quot;&quot;,<br/></p>
+<p>&quot;type&quot; :&quot;dev-status&quot;,<br/>&quot;seq&quot;:3,<br/>&quot; expires &quot; : 60 ,<br/>&quot;mac &quot;: &quot;e0-30-f1-00-6c-55&quot; ,<br/>&quot;&quot; ipve&quot;r&quot;::&quot; &quot;5319<br/></p>
+<p>22.16-68.<br/>10.6<br/></p>
+<p>&quot;-924-041-,100-00e&quot;,<br/>&quot;max-ports&quot;: 32 ,<br/>&quot;max-slot&quot;: 4 ,<br/>&quot;status&quot;:[<br/></p>
+<p>{<br/>&quot;port &quot;: &quot;1.01&quot; ,<br/>&quot;sim&quot;:&quot;&quot;,<br/>&quot;seq&quot;:8,<br/>&quot;st&quot;:3,<br/></p>
+<p>i ei&quot;<br/>cs<br/></p>
+<p>:<br/>i<br/>&quot; 8<br/></p>
+<p>: : 41 6<br/>5<br/><b>9 </b>0<br/></p>
+<p>46 &quot;<br/>7<br/></p>
+<p>,<br/>1 <b>2</b>182949713 33431&quot;,<br/></p>
+<p>&quot;opr&quot; :&quot;46001 CHINA UNICOM GSM&quot;,<br/>&quot;bal&quot;: &quot;0.00&quot; ,<br/></p>
+<p><i>y<br/></i>_<br/>&quot;<br/>o<br/>:1<br/>d<br/></p>
+<p><i>u<br/></i>r<br/>,<br/>:<br/><i>&quot;<br/></i>d<br/></p>
+<p><i>:<br/></i>ur&quot;:<br/></p>
+<p>&quot;e<br/>/ -<br/>/-<br/>1<br/></p>
+<p>&quot;<br/>,<br/>,<br/></p>
+<p><b><i>6.4.2 Send commend<br/></i></b><i></i>Url: http://192.168.1.67:80/goip send cmd.html?Username=root&amp;password=root<br/></p>
+<p>Body: {&quot;type&quot;:&quot;command&quot;,&quot;op:&quot;switch&quot;,&quot;ports&quot;:&quot;2.02&quot;}<br/>Response:<br/></p>
+<p>K<br/>&quot;code&quot;<br/>&quot;reason&quot;<br/></p>
+<p>4<br/></p>
+<p><b><i>6.4.3 Modify IMEIparameters<br/></i>Url: http://IP:port/goip_send_cmd.html?username=xx&amp;password=xx&amp;op=set<br/>Body:sim_imei(n)=xxx&amp;sim_imei(n)=xxx<br/>Method:POST<br/>Response:<br/></b></p>
+<p>1<br/>2 &quot;code&quot;:0,<br/>3 &quot;reason&quot;:&quot;OK&quot;,<br/>4 &quot;par_set&quot;:2<br/>5 S<br/></p>
+<p><b>Reference:<br/></b>information in HTTP message Body is a text,many imei parameters modify use &amp;to connect.<br/>sim_imei(n)=xXXX,<br/>n=(port_number-1)*slots_per_port+(slot_number-1)xxx=imei parameters<br/>Example:<br/></p>
+<p>sim_imei(21)=865847053403202&amp;sim_imei(51)=865847053403213<br/>21 means 6B,B is slot_number 2,so 6B=(6-1)*4+(2-1)=21<br/>51 means 13D,Dis slot_number 4,so 13D=(13-1)*4+(4-1)=51<br/></p>
+<p><b><i>6.4.4 Add SIM Card Numbers<br/></i></b><i></i>Url:http://ip:port/goip_send_cmd.html?username=XXX&amp;password=XXX&amp;op=set<br/></p>
+<p>Document No:xXxxxxx 11/22/2024<br/>Version:2.4.0<br/></p>
+<p>: 0<br/>:<br/></p>
+<p>1<br/>2<br/>3 &quot;OK&quot;<br/></p>
+<p>}<br/></p>
+<p>K<br/></p>
+<p>,</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP API Development<br/>Body: sim_number(n)=xxx&amp;sim_number(n)=xxx<br/><b>Method:POST<br/>Response:<br/></b></p>
+<p>1<br/>2<br/>3<br/>4<br/>5<br/></p>
+<p>2<br/>&quot;code&quot;:0,<br/>&quot;reason&quot;: &quot;OK&quot;,<br/>&quot;par_set&quot;:2<br/></p>
+<p><b>Reference:<br/></b>information in HTTP message Body is a text,many imei parameters modify use &amp;to connect.<br/>sim_number(n)=xxxx,<br/>n=(port_number-1)*slots_per_port+(slot_number-1),xxx=sim_numbers parameter<br/>Example:<br/></p>
+<p>sim_number(192)=1358021178&amp;sim_number(196)=123456762221<br/>192 represents 25.01,where max-slot is 8,and the slot number for0l is 1.<br/>So,25.01=(25-1)*8+(1-1)=192.<br/>196 represents 25.05,max-slot is 8,and the slot number for 05 is 5.<br/>So,25.05=(25-1)*8+(5-1)=196.<br/></p>
+<p><b><i>6.4.5 Send SMS<br/>Url:<br/></i></b></p>
+<p>http:// 192.168.1.67:80/goip post sms.html?username=root&amp;password=root<br/><b><i>Body:<br/></i></b></p>
+<p>{&quot;type&quot;:&quot;send-sms&quot;,&quot;task_num&quot;:1,&quot;tasks&quot;:[{&quot;tid&quot;:1223,&quot;to&quot;:&quot;13686876620&quot;,&quot;sms&quot;:&quot;hello123&quot;}}}<br/><b><i>Response:<br/></i></b></p>
+<p>&quot;<br/>&quot;<br/>co<br/>re<br/></p>
+<p>de<br/>as<br/></p>
+<p>&quot;:20<br/>on :<br/></p>
+<p>,<br/>&quot;OK&quot;,<br/></p>
+<p>&quot;&quot;tsytpae&quot;tus:&quot;&quot;:t[ask-status&quot; ,<br/>{<br/></p>
+<p>&quot;tid&quot;:1223,<br/>&quot;status&quot; :&quot;0 OK&quot;<br/></p>
+<p>}<br/>]<br/></p>
+<p>H<br/></p>
+<p><b><i>6.4.6 Pause the SMS task<br/>Url:<br/></i></b></p>
+<p><b>http://192.168.1.67:80/goip pause sms.html?username=root&amp;password=root<br/><i>Body:<br/></i></b></p>
+<p><b>{&quot;tids&quot;:[2,3]}<br/><i>Response:<br/></i></b></p>
+<p>Document No:XXXXXXX 11/22/2024 Page 21<br/>Version:2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p><b>SKYLINE HTTP API Development<br/></b></p>
+<p><b><i>6.4.7 Resume thepaused SMS task<br/></i></b></p>
+<p><b>Url:<br/></b>http://192.168.1.67:80/goip resume sms.html?Username=root&amp;password=root<br/></p>
+<p><b><i>Body:<br/></i>{&quot;tids&quot;:[2,3]}<br/></b></p>
+<p><b><i>Response:<br/></i></b></p>
+<p><b><i>6.4.8 Delete the SMS task<br/>Url:<br/></i></b></p>
+<p><b>http://192.168.1.67:80/goip remove sms.html?Username=root&amp;password=root<br/><i>Body:<br/></i></b></p>
+<p><b>{&quot;tids&quot;:[2,3]}<br/><i>Response:<br/></i></b></p>
+<p>Document No:XXXXXXX 11/22/2024 Page 22<br/>Version:2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p><b>SKYLINE HTTP API Development<br/></b></p>
+<p><b><i>6.4.9 Query the SMS task<br/>Url:<br/></i></b></p>
+<p>http://192.168.1.67:80/goip get tasks.html?version=1.1&amp;username=root&amp;password=root&amp;port=1&amp;pos=0&amp;h<br/>as content=1<br/></p>
+<p>Response:<br/>&quot;code&quot;:200,<br/>&quot;reason&quot;:&quot;OK&quot;,<br/>&quot;total_num&quot;:5,<br/>&quot;task_num&quot;:5,<br/>&quot;tasks&quot;:[<br/></p>
+<p>{<br/>&quot;tid&quot;:2,<br/>&quot;state&quot;:0,<br/>&quot;from&quot;:&quot;&quot;,<br/>&quot;to&quot;:&quot;13686876820&quot;,<br/>&quot;chs&quot;:&quot;utf8&quot;,<br/>&quot;coding&quot;:0,<br/>&quot;sms&quot;:&quot;hello123&quot;<br/></p>
+<p>&quot;tid&quot;:|3,<br/>&quot;state&quot;:0,<br/>&quot;from&quot;:&quot;&quot;,<br/>&quot;to&quot;:&quot;13686876820&quot;,<br/>&quot;chs&quot;:&quot;utf8&quot;,<br/>&quot;coding&quot;:0,<br/>&quot;sms&quot;:&quot;hello123&quot;<br/></p>
+<p>&quot;tid&quot;:4,<br/>&quot;state&quot;:0,<br/>&quot;from&quot;:&quot;&quot;,<br/>&quot;to&quot;:&quot;10010&quot;,<br/>&quot;chs&quot;:&quot;utf8&quot;,<br/>&quot;coding&quot;:0,<br/>&quot;cme&quot;&#183;&quot;CYVF&quot;<br/></p>
+<p><b>7 Receive the SMS<br/></b>Device will send SMS to serverby POST request,while it get SMS from operator.<br/></p>
+<p><b><i>7.1 Topology<br/></i></b></p>
+<p>While forwarding SMS,device send a request to server first,so even device in<br/>LAN,and server in a public net,it also can work effectively<br/></p>
+<p>Document No:XXXXXXX 11/22/2024 Page 23<br/>Version:2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP API Development<br/></p>
+<p>serer<br/></p>
+<p>Intranet<br/></p>
+<p>device<br/>DZM<br/></p>
+<p><b><i>7.2 Message description<br/>7.2.1 URL<br/></i></b></p>
+<p>Default set by device,server can revise it in SMS sending quest message.<br/></p>
+<p>7.2.2 Parameter<br/>Parameter Description Default Required Remark<br/>version API version 1.1 Y Thisdocument describes<br/></p>
+<p>specification support only<br/></p>
+<p><b><i>7.2.3 Data<br/></i></b><i></i>A JSON format string consisting of one or more short messages.Thevalue of the<br/></p>
+<p>HTTP header parameter &quot;Content-Type&quot;is &quot;application/json;charset=utf-8&quot; .<br/><b>{&quot;type&quot;:&#8220;recv-sms&quot;,&quot;sms_num&quot;:n,&quot;sms&quot;:[[]..,[Il}<br/></b>Attributes instructions:<br/></p>
+<p>Parameter Data<br/>type<br/></p>
+<p>Description<br/>Default Required<br/></p>
+<p>type String Data type None Y(recv-sms)<br/>sms num String Total SMS num None Y<br/>sms Array SMS array None Y<br/></p>
+<p>For saving the bandwidth,SMS content also storage in a array.<br/>[0]:Delivery report flag,0:normal SMS,1:This is a delivery report<br/>[1]:Receive report(&quot;1.01&#8217;,'1.02')<br/>[2]:timestamp while device got this SMS<br/>[3]:Sender(If Delivery report flag set to 1,then sender should be SMCC)<br/>[4]:Recipient(If Delivery report flag set to 1,then recipient should be the<br/></p>
+<p>original recipient.)<br/>Document No:xXxxxxx 11/22/2024 Page 24<br/>Version:2.4.0<br/></p>
+<p>depe</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>[5]: SMS content&#65306;<br/>Delivery report: &quot;code scts&quot;, code is 0 for successful delivery, utf-8<br/>Ordinary SMS: BASE64 encoding of utf-8<br/></p>
+<p><b>8 Query SMS<br/></b>Customers can actively query the SMS received by the device through HTTP<br/></p>
+<p>GET/POST request.<br/></p>
+<p><b><i>8.1 Queryprocess<br/></i></b><i></i>1. Query all messages received by the device without the query parameters (except for user-verified<br/></p>
+<p>parameters).<br/>2. Use the value of next_sms returned by the device as the value of the sms_id parameter to query<br/></p>
+<p>subsequent SMS messages.<br/>3. If the device restarts, return a different ssrc synchronization source ID and return to step 1.<br/>4. Repeat step 2<br/></p>
+<p><b><i>8.2 Message description<br/>8.2.1 URL<br/></i></b></p>
+<p><b>http: / /host:port/goip_get_sms.html?</b>username=root&amp;password=root&amp;sms_ id=xxx&amp;sms_num=xxx<br/>host: Device IP address<br/>port: Device webpage management port, default value is 80.<br/></p>
+<p><b><i>8.2.2 Parameter<br/></i>Parameter Description Default Required Remark<br/></b>sms id_ Start SMS ID 1 N 1&#65306;The first SMS ID received<br/></p>
+<p>by the device<br/>sms num_ Specify the number of<br/></p>
+<p>SMS to be queried<br/>0 N 0&#65306;Query all SMS<br/></p>
+<p>sms del Delete the SMS that has<br/>been returned by the query<br/></p>
+<p>0 N 0&#65306;Do not delete&#65292;1&#65306;delete<br/></p>
+<p><b><i>8.2.3 Data<br/></i></b><i></i>A JSON format string consisting of one or more short messages. The value of the<br/></p>
+<p>HTTP header parameter &quot;Content-Type&quot; is&#8220;application/ json;charset=utf-8&#8221;&#12290;<br/>{<br/>&quot;code&quot;: 0,<br/>&quot;reason&quot;: &quot;OK&quot;,<br/>&quot;ssrc&quot;: &quot;0123456789abcdef&quot;,<br/>&quot;sms_num&quot;: 2,<br/>&quot;next_sms&quot;: 3,<br/>&quot;data&quot;:<br/>[<br/>[0, &quot;1B&quot;,<br/>1466506477,&quot;10010&quot;,&quot;13265825775&quot;,&quot;5bCK5pWs55qE55So5oi377yM5oKo5aW977yB5o6o6I2Q5oK<br/>o5L2/55So44CQ5omL5py66JCl5Lia5Y6F44CR5LiA56uZ5byP5YWN5rWB6YeP5pyN5Yqh5bmz5Y<br/>+wIGh0dHA6Ly91LjEwMDEwLmNuL2R0Y2Qg77yM6L275p2+5p+l6K+i6K+d6LS544CB5L2Z6aK<br/>d5Y+K6K+m5Y2V77yb5oiW5Zue5aSN5Lul5LiL5pWw5a2X5Luj56CB6I635Y+W5oKo6ZyA6KaB5<br/>Document No : xxxxxxx 11/22/2024 Page 25<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>5qE5pyN5Yqh77yaDQoxMDEu5b2T5pyI6K+d6LS577ybDQoxMDIu5Y+v55So5L2Z6aKd77ybDQo<br/>wLuWNh+e6pzRH77ybDQoxLuivnei0ueWPiuenr+WIhu+8mw0KMi7otKbmiLfmn6Xor6LvvJsNCjM<br/>u5YWF5YC877ybDQo0LuWuouaIt+acjeWKoe+8mw0KNS7kuJrliqHlip7nkIbvvJsNCjYu5aKe5YC85<br/>Lia5Yqh77ybDQo3LuecgeS7veS4k+WMuu+8mw0KOS7ng63ngrnkv4PplIDjgIINCuW5v+S4nOiBlO<br/>mAmuOAggAAAAA=&quot;],<br/><b>[</b>0, &quot;1B&quot;,<br/>1466506670,&quot;10010&quot;,&quot;13265825775&quot;,&quot;5bCK5pWs55qE55So5oi377yM5oKo5aW977yB5o6o6I2Q5oK<br/>o5L2/55So44CQ5omL5py66JCl5Lia5Y6F44CR5LiA56uZ5byP5YWN5rWB6YeP5pyN5Yqh5bmz5Y<br/>+wIGh0dHA6Ly91LjEwMDEwLmNuL2R0Y2Qg77yM6L275p2+5p+l6K+i6K+d6LS544CB5L2Z6aK<br/>d5Y+K6K+m5Y2V77yb5oiW5Zue5aSN5Lul5LiL5pWw5a2X5Luj56CB6I635Y+W5oKo6ZyA6KaB5<br/>5qE5pyN5Yqh77yaDQoxMDEu5b2T5pyI6K+d6LS577ybDQoxMDIu5Y+v55So5L2Z6aKd77ybDQo<br/>wLuWNh+e6pzRH77ybDQoxLuivnei0ueWPiuenr+WIhu+8mw0KMi7otKbmiLfmn6Xor6LvvJsNCjM<br/>u5YWF5YC877ybDQo0LuWuouaIt+acjeWKoe+8mw0KNS7kuJrliqHlip7nkIbvvJsNCjYu5aKe5YC85<br/>Lia5Yqh77ybDQo3LuecgeS7veS4k+WMuu+8mw0KOS7ng63ngrnkv4PplIDjgIINCuW5v+S4nOiBlO<br/>mAmuOAggAAAAA=&quot;]<br/>]<br/>}<br/></p>
+<p>Property description:<br/><b>Parameter Data type Description Default Requir<br/></b></p>
+<p><b>ed<br/></b>code int Operation code None Y<br/>reason string Reason description None Y<br/>ssrc string Synchronization source identifier The device<br/></p>
+<p>generates a new ssrc each time it runs.<br/>So the value changes, re-query<br/></p>
+<p>None Y<br/></p>
+<p>sms num_ int Number of SMS queried None Y<br/>next sms int The next SMS ID None Y<br/>data int Queryed SMS content None Y<br/></p>
+<p>For saving the bandwidth, SMS content also storage in a array. [0]:<br/>Delivery report flag,0:normal SMS, 1:This is a delivery report [1]: Receive<br/>report(&#8216; 1.01&#8217;, &#8217;1.02&#8217;)<br/>[2] : timestampwhile device got this SMS<br/></p>
+<p>[3] : Sender(If Delivery report flag set to 1, then sender should be SMCC)<br/>[4] : Recipient(If Delivery report flag set to 1,then recipient should be the original recipient. )<br/>[5] : SMS content&#65306;<br/></p>
+<p>Delivery report: &quot;code scts&quot;, code is 0 for successful delivery, utf-8 Ordinary SMS:<br/>BASE64 encoding of utf-8<br/></p>
+<p><b>9 Query SMS statistics<br/></b>The client can actively query the short message statistics of the device through the HTTP GET<br/></p>
+<p>request.<br/>Document No : xxxxxxx 11/22/2024 Page 26<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p><b><i>9.1 Message description<br/></i></b></p>
+<p><b><i>9.1.1 URL<br/></i>http://host:port/goip_get_sms_stat.html?version=xxx&amp;username=xxx&amp;password=xx<br/>x&amp;p orts=xxx&amp;slots=xxx&amp;type=xxx<br/></b></p>
+<p>host: Device IP address<br/>port: Device webpage management port, default value is 80.<br/></p>
+<p><b><i>9.1.2 Parameter<br/></i>Parameter Description Default Required Remark<br/></b>version API version 1.0 N 1.0 :Compatible with<br/></p>
+<p>previous API<br/>1.1 : Support for<br/>the description of this<br/>document<br/></p>
+<p>username Device Username None Y<br/>password Device password None Y<br/>ports The specified port number (valued from<br/></p>
+<p>1). The values are as follows:<br/>1) all: all ports;<br/>2) 2: Specify a single port;<br/>3) 1-2, 4: Port numbers separated by<br/>short numbers, specifying multiple ports,<br/>where &quot;-&quot; indicates a continuous port<br/>number;<br/></p>
+<p>all N<br/></p>
+<p>slots The specified card slot number (value from<br/>1). The values are as follows:<br/>1) Do not specify: current card<br/>2) all: all card slots;<br/></p>
+<p>Current<br/>card<br/></p>
+<p>N<br/></p>
+<p>3) 2: Specify a single card slot;<br/>4) 1-2, 4: A card slot number<br/>separated by a short number,<br/>specifying a plurality of card slots,<br/>where &quot;-&quot; indicates a continuous card<br/>slot number;<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 27<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>type statistic type. The values are as follows:<br/></p>
+<p>1) 0: The last hour;<br/>2) 1: The last two hours;<br/>3) 2: today;<br/>4) 3: cumulative;<br/></p>
+<p>0 N<br/></p>
+<p><b><i>9.1.3 Response<br/></i></b><i></i>The body of the response is a JSON array, and the value of the HTTP header parameter<br/></p>
+<p>&quot;Content-Type&quot; is&#8220;application/json;charset=utf-8&#8221; .<br/><b>{&#8220;code&#8221;:200,&#8220;reason&#8221;</b>&#65306;<b>&#8220;OK&#8221;,&#8220;count&#8221;:n,&#8220;stats&#8221;:[{&#8220;port&#8221;:xxx,&#8230;}</b>&#65292;<b>&#8230;]}<br/></b></p>
+<p>Property description:<br/></p>
+<p><b>Parameter Data type Description Default Required<br/></b>code int Interface processing result code None Y<br/>reason string Interface processing result reason None Y<br/>count int Number of statistical results None Y<br/>stats stat result<br/></p>
+<p>array<br/>Array of statistical results (stat<br/>results are as follows)<br/></p>
+<p>None Y<br/></p>
+<p>stat result description:<br/><b>Parameter Data type Description Default Required<br/></b>port int Port number (value from 1) None Y<br/>slot int Slot number (value from 1) None Y<br/>received int Number of SMS received None Y<br/>sent int Number of SMS sent None Y<br/>sent_ok int Number of successful SMS sent None Y<br/>sent_failed int Number of failed SMS sent None Y<br/>con failed_ int Number of consecutive failed SMS None Y<br/>unsent int Number of unsent SMS None Y<br/>sending int Number of SMS being sent None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 28<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p><b>10 Query call statistics<br/></b>The client can actively query the call statistics of the device through the HTTP GET request.<br/></p>
+<p><b><i>10 .1 Message description<br/></i></b></p>
+<p><b><i>10.1.1 URL<br/></i>http://host:port/goip_get_call_stat.html?version=xxx&amp;username=xxx&amp;password=x<br/>xx&amp; ports=xxx&amp;slots=xxx&amp;type=xxx<br/></b>host: Device IP address<br/>port: Device webpage management port, default value is 80.<br/></p>
+<p><b><i>10.1.2 Parameter<br/></i>Parameter Description Default Required Remark<br/></b></p>
+<p>version API version 1.0 N 1.0: Compatible with<br/>previous API 1.1:<br/>Support for the<br/>description<br/>of this document<br/></p>
+<p>username Device Username None Y<br/>password Device password None Y<br/></p>
+<p>ports<br/></p>
+<p>The specified port number (valued<br/>from 1). The values are as follows:<br/>(1) all: all ports;<br/>(2) 2: Specify a single port;<br/>(3) 1-2, 4: Port numbers separated by<br/>short numbers, specifying multiple<br/>ports, where &quot;-&quot; indicates a continuous<br/>port number;<br/></p>
+<p>all N<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 29<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p>slots<br/></p>
+<p>The specified card slot number<br/>(value from 1). The values areas<br/>follows:<br/>(1) Do not specify: current card<br/>(2) all: all card slots;<br/>(3) 2: Specify a single card slot;<br/>(4) 1-2, 4: A card slot number<br/>separated by a short number,<br/>specifying a plurality of card slots,<br/>where &quot;-&quot; indicates a<br/>continuous card slot number;<br/></p>
+<p>Current<br/>card<br/></p>
+<p>N<br/></p>
+<p>type statistic type. The values are as<br/>follows:<br/>(1) 0: The last hour;<br/>(2) 1: The last two hours;<br/>(3) 2: today;<br/>(4) 3: cumulative;<br/></p>
+<p>0 N<br/></p>
+<p><b><i>10.1.3 Response<br/></i></b><i></i>The body of the response is a JSON array, and the value of the HTTP header parameter<br/></p>
+<p>&quot;Content-Type&quot; is&#8220;application/json;charset=utf-8&#8221; .<br/><b>{&#8220;code&#8221; :200,&#8220;reason&#8221;</b>&#65306;<b>&#8220;OK&#8221;,&#8220;count&#8221;:n,&#8220;stats&#8221; :[{&#8220;port&#8221;:xxx,&#8230;}</b>&#65292;<b>&#8230;]}<br/></b></p>
+<p>Property description:<br/><b>Parameter Data type Description Default Required<br/></b>code int Interface processing result code None Y<br/>reason string Interface processing result reason None Y<br/>count int Number of statistical results None Y<br/>stats stat result<br/></p>
+<p>array<br/>Array of statistical results (stat<br/>results are as follows)<br/></p>
+<p>None Y<br/></p>
+<p>stat result description:<br/></p>
+<p><b>Parameter Data type Description Default Required<br/></b>port int Port number (value from 1) None Y<br/>slot int Slot number (value from 1) None Y<br/>calls int Number of calling None Y<br/>alerted int Number of alerting None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 30<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/></p>
+<p>connected int Number of connected calls None Y<br/></p>
+<p>con_failed int Number of failed calls None Y<br/></p>
+<p>nc string No Carriers success ratio(&quot;n/m&quot;),the numerator<br/>n is the success number,and the<br/></p>
+<p>denominator m is the total number None Y<br/></p>
+<p>pdd int PDD None Y<br/>acd int ACD None Y<br/></p>
+<p>asr int ASR percentage value,for<br/>example,asr is 43,which is43% None Y<br/></p>
+<p>tcd int Cumulative call duration<br/>(minutes)<br/></p>
+<p>None Y<br/></p>
+<p>act_tcd int (actual)actual cumulative call duration<br/>(seconds) None Y<br/></p>
+<p>11 MMS receiving<br/>At this stage,the main function is to push the received MMS content to the configured server<br/></p>
+<p>address via HTTP.<br/></p>
+<p><i>11.1 Configuration<br/></i>In the'SMS/MMS Settings'menu of the device,the 'MMS Inbox'page allows you to configure<br/></p>
+<p>the push receiving server address,as shown in the figure below<br/>Basic Settings MMS Inbox<br/></p>
+<p>SIP Setting<br/>Gateway Settings BasicSettings &#9315;Colapse<br/></p>
+<p>SMSMMS Settings Enable: Enabled<br/>Port Setings 192.168.1.142.8899<br/>SMS Send URL:<br/></p>
+<p>SMS Receive Suomit Reset<br/>SMS Forward<br/></p>
+<p>SMS Inter-Sending<br/>MesageControl<br/></p>
+<p>SMPP Setings<br/>EIMS Settings<br/>Pretx Route<br/>SMS Filter<br/>MMS Send<br/>MMS Inbox<br/></p>
+<p>&gt;Enable:Whether to enable the MMS content push function.<br/>&gt;URL:The HTTP server address that receives MMS content push.<br/><i>11.2 Message Push Format<br/></i></p>
+<p>MMS content is pushed via HTTP POST.Please refer to the HTTP standard for details.Only<br/>ment No XXXXXXX 11/22/n024 Paoe 31<br/></p>
+<p>LOCulllCIIL INO. XXXXXXX <i>1l/22/2024<br/></i></p>
+<p>Version:2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>special HTTP header fields are explained below (Note: header fields may not exist). In addition,<br/></p>
+<p>header field name Code<br/>,<br/></p>
+<p>parameter Instructions<br/>Emms-Subject BASE64 charset&#65306;Character<br/></p>
+<p>set, such as UTF-8<br/>MMS subject<br/></p>
+<p>Emms-From BASE64 charset: Character<br/>set, such as UTF-8<br/>type: Sender address<br/>type, usually a phone<br/>number, known as<br/>PLMN<br/></p>
+<p>MMS sending<br/>address<br/></p>
+<p>Emms-To BASE64 charset: Character<br/>set, such as UTF-8<br/>type: Sender address<br/>type, usually a phone<br/>number, known as<br/>PLMN<br/></p>
+<p>MMS receiving<br/>address<br/></p>
+<p>Date None None MMS sending time<br/></p>
+<p>Content-Type None Related to specific<br/>types<br/></p>
+<p>The specifics need to<br/>be decided according<br/>to the operator, but<br/>attention should be<br/>paid to the processing<br/>ofmultipart related<br/>types<br/></p>
+<p><b><i>11.3 Push Message Example<br/></i></b><i></i>The following is a MMS message sent during a certain test. (Note: Ellipsis in the image<br/></p>
+<p>represents omitted content which is irrelevant to the format.)<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 32<br/>Version: 2.4.0<br/></p>
+<p>header fields starting with 'Emms-' are custom fields while others are standard HTTP fields:</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP API Development<br/>POST /HTTP/1.1<br/>Host:192.168.1.142:8899<br/>Date:Thu,28 Mar 202409:47:10 GMT<br/>Emms-Subject:c3ViamvjdDAw;charset=US-ASCII<br/>Emms-From:Kzg2MTM3NTEWNjQ&#215;Mjk=;type=PLMN;charset=UTF-8<br/>Emms-To:ODYXMzU4MDI1NjgONw==;type=PLMN;charset=UTF-8<br/>Keep-Alive:timeout=180<br/>Connection:Keep-Alive<br/>content-Type:multipart/related;boundary=832817471092001110508;type=&quot;application/smil&quot;;start=&quot;&lt;0.smil&gt;&quot;<br/>Content-Length:176603<br/>--032817471092001110508<br/>Content-Type:application/smil<br/>Content-ID:&lt;0.smil&gt;<br/></p>
+<p>C<br/>-0328onte 1n t<br/></p>
+<p>7-471Typ0e<br/>9<br/>:i20011mage1/ j0p508eg ;name=&quot;ING_3337.jpg&quot;<br/></p>
+<p>--032817471092001110508<br/>Content-Type:text/plain;charset=US-ASCII<br/>Content-Location:text_1.txt<br/>contenteo<br/>--032817471092001110508--<br/></p>
+<p><b>12 ESIM<br/></b>This API provides operations to query,write to,and delete ESIM on the device.The write and<br/></p>
+<p>delete operations for ESIM cannot be completed immediately,so when a successful HTTP request is<br/>submitted,the status field returned is 1,indicating that the task has been submitted but the operation<br/>has not been performed yet.To know the result of the previously submitted operation,it is necessary<br/>to use the query ESIM interface regularly to obtain various ESIM information and judge the value of<br/>the status field.<br/><b><i>12.1 Query ESIM<br/>12.1.1 URL<br/></i></b></p>
+<p>Request the following URL via HTTP GET method:<br/><b>http://host:port/goip_get_esims.html?version=xxx&amp;username=xxx&amp;password=xxx&amp;ports=xxx<br/></b>method:<b>GET<br/></b>host:device IP address<br/>port:device web port,the default is 80,optional.<br/></p>
+<p><b><i>12.1.2 Parameter<br/></i></b><i></i>Parameter Description Default Required Remark<br/></p>
+<p>version API version 1.0 N 1.0:Compatible with<br/>previous API<br/>1.1:Support for the<br/>description of this<br/>document<br/></p>
+<p>username Device Username None Y<br/></p>
+<p>Document No:xXxxxxx 11/22/2024 Page 33<br/>Version:2.4.0<br/></p>
+<p>Content-Location:IMG_3337.jpg</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>password Device password None Y<br/></p>
+<p>ports<br/></p>
+<p>The specified port number (valued<br/>from 1). The values are as follows:<br/>(4) all: all ports;<br/>(5) 2: Specify a single port;<br/>(6) 1-2, 4: Port numbers separated by<br/>short numbers, specifying multiple<br/>ports, where &quot;-&quot; indicates a continuous<br/>port number;<br/></p>
+<p>all N<br/></p>
+<p><b><i>12.1.3 Response<br/></i></b><i></i>The value of the HTTP header parameter &quot;Content-Type&quot; is&#8220;application/json;charset=utf-8&#8221;.<br/>{&#8220;code&#8221;:200,&#8220;reason&#8221;&#65306;&#8220;OK&#8221;,&#8220;count&#8221;:n,&#8220;ports&#8221;:[{&#8220;port&#8221;:xxx,&#8230;}&#65292;&#8230;]}<br/></p>
+<p>Property description:<br/><b>Parameter Data type Description Default Required<br/></b>code int Interface processing result code None Y<br/>reason string Interface processing result reason None Y<br/>count int Number of statistical results None Y<br/>ports query result<br/></p>
+<p>array<br/>An array of query results. Each result item in<br/>the array is as follows<br/></p>
+<p>None Y<br/></p>
+<p>Description of the query result item:<br/><b>Parameter Data type Description Default Required<br/></b>port int Port number (value from 1) None Y<br/>eid string eUICC ID None Y<br/>esim_state int If or not the eid is obtained correctly:<br/></p>
+<p>0 - no<br/>1 - yes<br/></p>
+<p>None Y<br/></p>
+<p>profiles array The array of ESIM information for this port,<br/>with each ESIM information as follows<br/></p>
+<p>None Y<br/></p>
+<p>ESIM information array item description:<br/><b>Parameter Data type Description Default Required<br/></b>slot int Slot number (value from 1) None Y<br/>enabled int If or not the current profile is enabled:<br/></p>
+<p>0 - disabled<br/>1 - enabled<br/></p>
+<p>None Y<br/></p>
+<p>iccid string ESIM corresponding iccid None Y<br/>ac string Activation code None Y<br/>cc string Confirmation code None Y<br/>provider string Name of service provider None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 34<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>exust int If or not the current slot has been written into<br/></p>
+<p>the profile:<br/>0 - no<br/>1 - yest<br/></p>
+<p>None Y<br/></p>
+<p>op int Profile operation of the current slot:<br/>0 - no operation<br/>1 - writing<br/>2 - deleting<br/></p>
+<p>None Y<br/></p>
+<p>status int The current esim profile operation status, with<br/>the following values<br/>The values are as follows:<br/>0 - No operation<br/>1 - Operation request submitted<br/>2 - Profile operation is in progress on the<br/>current port<br/>3 - Operation error, the specific reason is<br/>described in the reason field<br/></p>
+<p>None Y<br/></p>
+<p>reason string Causes of operational errors None Y<br/></p>
+<p><b><i>12.2 Write to ESIM<br/>12.2.1 URL<br/></i></b></p>
+<p>Request the following URL via HTTP <b>POST </b>method:<br/>http: / /host:port/goip_write_esims.html?version=xxx&amp;username=xxx&amp;password=xxx<br/></p>
+<p>method:<b>POST<br/></b>host: device IP address<br/>port: device web port,the default is 80,optional.<br/></p>
+<p><b><i>12.2.2 Parameter<br/></i>Parameter Description Default Required Remark<br/></b></p>
+<p>version API version 1.0 N 1.0: Compatible with<br/>previous API<br/>1.1: Support for the<br/>description of this<br/>document<br/></p>
+<p>username Device Username None Y<br/>password Device password None Y<br/></p>
+<p><b><i>12.2.3 POST data<br/></i></b><i></i>The data of an HTTP POST request is a JSON array, where each data item is a structure of the<br/></p>
+<p>following fields:<br/><b>Parameter Data type Description Default Required<br/></b>port int Port number (value from 1) None Y<br/>slot int Slot number (value from 1) None Y<br/>ac string Activation code None Y<br/>cc string Confirmation code None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 35<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/><b><i>12.2.4 Response<br/></i></b></p>
+<p>The value of the HTTP header parameter &quot;Content-Type&quot; is&#8220;application/json;charset=utf-8&#8221;.<br/>{&#8220;code&#8221;:200,&#8220;reason&#8221;&#65306;&#8220;OK&#8221;,&#8220;count&#8221;:n,&#8220;ports&#8221;:[{&#8220;port&#8221;:xxx,&#8230;}&#65292;&#8230;]}<br/></p>
+<p>Property description:<br/><b>Parameter Data type Description Default Required<br/></b>code int Interface processing result code None Y<br/>reason string Interface processing result reason None Y<br/>ports result<br/></p>
+<p>array<br/>An array of results. Each result item in the<br/>array is as follows<br/></p>
+<p>None Y<br/></p>
+<p>Description of the result item:<br/><b>Parameter Data type Description Default Required<br/></b>port int port number (value from 1) None Y<br/>slot int slot number (value from 1) None Y<br/>status int The current esim profile submission write<br/></p>
+<p>operation status, the values are as follows:<br/>1 - Write request has been submitted<br/>2 - The current port is performing profile<br/>operation, submission failed<br/>3 - Other errors, submission failed<br/></p>
+<p>None Y<br/></p>
+<p><b><i>12.3 Delete ESIM<br/>12.3.1 URL<br/></i></b></p>
+<p>Request the following URL via HTTP <b>POST </b>method:<br/>http: / /host:port/goip_delete_esims.html?version=xxx&amp;username=xxx&amp;password=xxx<br/></p>
+<p>method:<b>POST<br/></b>host: device IP address<br/>port: device web port,the default is 80,optional.<br/></p>
+<p><b><i>12.3.2 Parameter<br/></i>Parameter Description Default Required Remark<br/></b></p>
+<p>version API version 1.0 N 1.0: Compatible with<br/>previous API<br/>1.1: Support for the<br/>description of this<br/>document<br/></p>
+<p>username Device Username None Y<br/>password Device password None Y<br/></p>
+<p><b><i>12.3.3 POST data<br/></i></b><i></i>The data of an HTTP POST request is a JSON array, where each data item is a structure of the<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 36<br/>Version: 2.4.0</p>
+
+</div></div>
+<div style="page-break-before:always; page-break-after:always"><div><p>SKYLINE HTTP APPLICATION INTERFACE<br/>following fields:<br/></p>
+<p><b>Parameter Data type Description Default Required<br/></b>port int port number (value from 1) None Y<br/>slot int slot number (value from 1) None Y<br/></p>
+<p><b><i>12.3.4 Response<br/></i></b><i></i>The value of the HTTP header parameter &quot;Content-Type&quot; is&#8220;application/json;charset=utf-8&#8221;.<br/>{&#8220;code&#8221;:200,&#8220;reason&#8221;&#65306;&#8220;OK&#8221;,&#8220;count&#8221;:n,&#8220;ports&#8221;:[{&#8220;port&#8221;:xxx,&#8230;}&#65292;&#8230;]}<br/></p>
+<p>Property description:<br/><b>Parameter Data type Description Default Required<br/></b>code int Interface processing result code None Y<br/>reason string Interface processing result reason None Y<br/>ports result<br/></p>
+<p>array<br/>An array of results. Each result item in the<br/>array is as follows<br/></p>
+<p>None Y<br/></p>
+<p>Description of the result item:<br/><b>Parameter Data type Description Default Required<br/></b>port int port number (value from 1) None Y<br/>slot int slot number (value from 1) None Y<br/>status int The current esim profile submission deletion<br/></p>
+<p>operation status, with the following values<br/>The values are as follows:<br/>1 - The deletion request has been submitted<br/>2 - The current port is performing a profile<br/>operation, and the submission failed<br/>3 - Other errors, submission failed<br/></p>
+<p>None Y<br/></p>
+<p>Document No : xxxxxxx 11/22/2024 Page 37<br/>Version: 2.4.0</p>
+
+</div></div>
+</body></html>
